@@ -1,8 +1,8 @@
 ---
-title: "Curso  de  Introdução à  Análise  de  Dados  no  R (UFRRJ)"
+title: "Curso  de Iniciação com R com exemplos de Política Internacional(USP)"
 subtitle: 'Trabalho Final'
 author: "Humberto Bezerra de Meneses Júnior"
-date: "03/11/2021"
+date: "29/04/2022"
 output:
   pdf_document: default
   html_document: default
@@ -23,9 +23,22 @@ library(dplyr)
 >NOME: **HUMBERTO BEZERRA DE MENESES JÚNIOR**  
 >TITULO: **Análise de Dados sobre Homicídios no RJ**
 
-## 2. OBJETIVOS
+---
 
-* Verificar o outlier presente da coluna Taxa de Homicídios, se confirmado um diagnóstico da distribuição assimétrica dos dados.
+## 2. BASE DE DADOS, MOTIVAÇÂO E OBJETIVOS
+
+- A base de dados é um recorte do número de Homicídios especificamente no Estado do RJ com o IDH presente por município, ressaltando a não exposição de dado pessoal individual.
+
+  * <https://github.com/jrhumberto/R_politicas_internacionais/blob/main/municipios_rj5.csv>
+
+- **Destaca-se que o Índice de Desenvolvimento Humano é importante métrica para verificação de um dado populacional acerca de Políticas Internacionais**.  Portanto, a motivação do presente estudo considera atributo que pode ser de interesse quando há reflexão acerca da Violência e de motivações implícitas. Base disponível em:
+
+- Objetivos:
+
+  * **Verificar alguma existência de outlier presente da coluna Taxa de Homicídios.**
+  * **Analisar um diagnóstico da distribuição assimétrica dos dados.**
+
+---
 
 ## 3. RESULTADOS
 
@@ -33,21 +46,25 @@ Uma prévia sanitização dos dados é feita através do recurso de **select com
 
 Para verificar a base de dados de Homicídios no RJ, também utiliza-se o recurso Kable em prol de determinar as primeiras linhas da tabela. A função Head contribui para que o recurso disponibilize as primeiras linhas da tabela.
 
-**Não é necessário todas as colunas  do dataset para esta análise, as que importam são a taxa de Homicídios, o Município e Região do RJ que contém esse numeral de taxa, por isso no parâmetro do dataset passado há um operação de slice(recorte) de colunas que interessam. Esse parâmetro "recortado" está sendo passado para função head() combinada com recurso Kable**:
+**Não é necessário trazer todas as colunas do dataset para esta análise**, as que importam são a taxa de Homicídios, o Município e a Região do RJ que contém esse numeral de taxa, por isso no parâmetro do dataset passado há um operação de slice(recorte) de colunas que interessam.  
+  
+Esse parâmetro "recortado" está sendo passado para função head() combinada com recurso Kable**:
 
 ===
 
 ```{r}
-dados0 <- read.csv('municipios_rj5.csv')
+url_base <- paste0("https://raw.githubusercontent.com/jrhumberto/",
+                   "R_politicas_internacionais/", "master/",
+                   "municipios_rj.csv", sep="")
+dados0 <- read.csv(url_base)
 
 dados1 <- dados0 %>%
           select(REGIAO, MUNICIPIO, TX_HOMICIDIO_100MIL) %>% 
           filter( TX_HOMICIDIO_100MIL > 0 , !is.na(TX_HOMICIDIO_100MIL) )
-
 knitr::kable(head(dados1[, 1:3]), "simple")
-
 ```
 
+---
 
 ## 4. GRÁFICOS
 
@@ -95,6 +112,8 @@ dados2 <- dados1 %>%
           filter( TX_HOMICIDIO_100MIL >= 100.0 )
 head(dados2)
 ```
+
+---
 
 ## 5. CONCLUSÂO
 
