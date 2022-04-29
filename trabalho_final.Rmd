@@ -27,15 +27,15 @@ library(dplyr)
 
 ## 2. BASE DE DADOS, MOTIVAÇÂO E OBJETIVOS
 
-- A base de dados é um recorte do número de Homicídios especificamente no Estado do RJ com o IDH presente por município, ressaltando a não exposição de dado pessoal individual.
+- A base de dados é um recorte do número de Homicídios especificamente no Estado do RJ com o IDH presente por município, ressaltando a não exposição de dado pessoal individual.Base disponível em:
 
-  * <https://github.com/jrhumberto/R_politicas_internacionais/blob/main/municipios_rj5.csv>
+  * <https://github.com/jrhumberto/R_politicas_internacionais/blob/main/municipios_rj.csv>
 
-- **Destaca-se que o Índice de Desenvolvimento Humano é importante métrica para verificação de um dado populacional acerca de Políticas Internacionais**.  Portanto, a motivação do presente estudo considera atributo que pode ser de interesse quando há reflexão acerca da Violência e de motivações implícitas. Base disponível em:
+- **Destaca-se que o Índice de Desenvolvimento Humano é importante métrica para verificação de um dado populacional acerca de Políticas Internacionais**.  Portanto, a motivação do presente estudo considera atributo que pode ser de interesse quando há reflexão acerca da Violência e de motivações implícitas. 
 
 - Objetivos:
 
-  * **Verificar alguma existência de outlier presente da coluna Taxa de Homicídios.**
+  * **Verificar alguma existência de outlier presente na coluna Taxa de Homicídios.**
   * **Analisar um diagnóstico da distribuição assimétrica dos dados.**
 
 ---
@@ -48,7 +48,7 @@ Para verificar a base de dados de Homicídios no RJ, também utiliza-se o recurs
 
 **Não é necessário trazer todas as colunas do dataset para esta análise**, as que importam são a taxa de Homicídios, o Município e a Região do RJ que contém esse numeral de taxa, por isso no parâmetro do dataset passado há um operação de slice(recorte) de colunas que interessam.  
   
-Esse parâmetro "recortado" está sendo passado para função head() combinada com recurso Kable**:
+Esse parâmetro "recortado" está sendo passado para função head() combinada com recurso Kable:
 
 ===
 
